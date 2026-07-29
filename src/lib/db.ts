@@ -3,7 +3,12 @@ import { Pool, type QueryResultRow } from "pg";
 
 function createPool() {
   if (process.env.DATABASE_URL) {
-    return new Pool({ connectionString: process.env.DATABASE_URL });
+    // Managed Postgres providers (Render, Neon, Heroku, ...) require SSL and
+    // typically use certs not in Node's default trust store.
+    return new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    });
   }
 
   return new Pool({

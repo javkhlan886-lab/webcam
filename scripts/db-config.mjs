@@ -7,7 +7,10 @@ for (const file of [".env.local", ".env"]) {
 
 export function getPoolConfig() {
   if (process.env.DATABASE_URL) {
-    return { connectionString: process.env.DATABASE_URL };
+    return {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    };
   }
 
   return {
