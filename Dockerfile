@@ -17,6 +17,10 @@ RUN npm run build
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
+# The platform's HOSTNAME env var (a container ID/name, not "0.0.0.0") would
+# otherwise make the standalone server.js bind to that specific hostname
+# instead of all interfaces, which external traffic can't reach.
+ENV HOSTNAME=0.0.0.0
 
 # Next.js "standalone" output: a minimal server.js plus only the node_modules
 # actually needed at runtime.
