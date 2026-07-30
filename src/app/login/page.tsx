@@ -37,7 +37,7 @@ export default function LoginPage() {
   return (
     <div className="flex flex-1 min-h-screen items-center justify-center bg-gradient-to-br from-gray-900 to-black">
       <div className="w-96 rounded-lg bg-gray-800 p-8 shadow-2xl">
-        <h1 className="mb-6 text-3xl font-bold text-white">Login</h1>
+        <h1 className="mb-6 text-3xl font-bold text-white">Javkhlan's system Login</h1>
         {error && (
           <div className="mb-4 rounded bg-red-500 p-3 text-white">{error}</div>
         )}
